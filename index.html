@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Tso - Biomedical Data Scientist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #fafafa;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --accent-blue: #5BA3D0;
+            --accent-light: #E8F4FA;
+            --border-light: #e0e0e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: flex-end;
+            gap: 3rem;
+            list-style: none;
+            padding: 1.5rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12rem 4rem 8rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero .description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.5;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--accent-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(91, 163, 208, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #4a92bf;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(91, 163, 208, 0.4);
+        }
+
+        /* Academic Experience Section */
+        .experience {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 4rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #d0d0d0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #d0d0d0;
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 0 3px #e8e8e8;
+        }
+
+        .degree-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .institution {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .timeline-item li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .timeline-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 10rem 2rem 6rem;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .hero .description {
+                font-size: 1rem;
+            }
+
+            .experience {
+                padding: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item::before {
+                left: -2.5rem;
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        /* Projects Section */
+        .projects-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 4rem;
+        }
+
+        .projects-container {
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .project-card {
+            background: #f5f5f5;
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .learn-more-btn {
+            background: none;
+            border: none;
+            color: var(--accent-blue);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            padding: 0;
+        }
+
+        .learn-more-btn:hover {
+            color: #4a92bf;
+            text-decoration: underline;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--bg-primary);
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 16px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: #999;
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 2.5rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--text-primary);
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .modal-content h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .modal-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .modal-content ul {
+            list-style: none;
+            margin-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content li {
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .modal-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-primary);
+            border-top: 1px solid var(--border-light);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Certificates Section */
+        .certificates-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 4rem;
+        }
+
+        .certificates-container {
+            animation: fadeInUp 0.8s ease-out 0.8s backwards;
+        }
+
+        .certificates-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .certificates-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .certificates-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 4rem;
+        }
+
+        .skills-container {
+            animation: fadeInUp 0.8s ease-out 1s backwards;
+        }
+
+        .skills-content p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .skills-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                const modals = document.getElementsByClassName('modal');
+                for (let modal of modals) {
+                    modal.style.display = "none";
+                }
+                document.body.style.overflow = "auto";
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('nav a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        const navHeight = document.querySelector('nav').offsetHeight;
+                        const targetPosition = targetSection.offsetTop - navHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#certificates">CERTIFICATES</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>RYAN TSO</h1>
+        <p class="subtitle">Biomedical Data Scientist</p>
+        <p class="description">
+            Current Masters of Biomedical Informatics student at Queen's University, conducting research under Dr. David Berman, Head of Pathology at the Sinclair Cancer Research Center and Dr. Tyryshkin, Biomedical Data Scientist.
+        </p>
+        <a href="mailto:ryancytso@gmail.com" class="cta-button">Contact Me</a>
+    </section>
+
+    <section id="about" class="experience">
+        <h2 class="section-title">Academic Experience</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 class="degree-title">Bachelor of Health Science,<br>Biomedical Discovery and Commercialization (BDC)</h3>
+                <p class="institution">Department of Biochemistry and Biomedical Science, McMaster University</p>
+                <ul>
+                    <li>Specializing in Drug Discovery Methods (vaccines, antibiotics, antivirals), Clinical Trial Research, and focus on Laboratory Testing, Business Development, Project Management Skills, Marketing, Finance & Accounting acumen.</li>
+                    <li>1st place of 2022 BDC Business Engagement Pitch Competition for a novel drug therapy against RSV supported by preclinical evidence, unmet clinical need analysis and strategic market positioning.</li>
+                    <li>Conducted Next Generation Sequencing (NGS) Rare Variant Analysis using SKAT statistical method to identify joint effects of multiple variants on phenotype, determining statistical significance between the SNP and the outcome phenotype.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3 class="degree-title">Masters of Biomedical Informatics (MBI)</h3>
+                <p class="institution">Department of Computing and Biomedical and Molecular Sciences, Queen's University</p>
+                <ul>
+                    <li>Conducted progression-free survival analysis on TCGA patient cohort using SAS to generate Kaplan-Meier Curves, calculating hazard ratio to benchmark new treatment options while producing CDISC-compliant adverse event summary tables.</li>
+                    <li>Developed multivariate prognostic survival model on breast cancer patient cohort using penalized cox regression, random survival forest, gradient boosted survival trees, assessing predictive discrimination using concordance index.</li>
+                    <li>Gathered primary data into Oracle Portal by Pathology Report Data Extraction and actively contributed to the Quantitative Nuclear Grading (QNG) project to automate feature extraction.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience">
+        <h2 class="section-title">Career Experience</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 class="degree-title">Research Assistant</h3>
+                <p class="institution">Stokes Lab, Institute for Infectious Disease Research, McMaster University</p>
+                <ul>
+                    <li>Collected, processed, and visualized high-dimensional antimicrobial compound screening data using PCA, t-SNE, comparing Euclidean distances to identify 5 lead compounds unique from human metabolites for early phase drug target discovery.</li>
+                    <li>Developed XGBoost model integrating bacterial strain metadata, antibiotic class information, and genomic sequence to predict minimum inhibitory concentrations (MICs).</li>
+                    <li>Designed robust procedures, documentation, and criteria for the use of automated equipment for high-throughput screening of large chemical libraries to identify novel small molecule compounds to be run on a chemical property predictor, ChemProp.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3 class="degree-title">Business Development Consultant</h3>
+                <p class="institution">MetaPath, RCM Health Consultancy, Toronto, CA</p>
+                <ul>
+                    <li>Devised market entry and commercial strategy for Second Opinion Digital Pathology platform, facilitated adoption and onboarding of Medical Testing Facilities and Pathology Specialist Clinics, ensuring communication between all stakeholders.</li>
+                    <li>Conducted partnership outreach, market research to identify strategic collaboration opportunities, while managing stakeholder relationships w/ PathAI, Biocache and Corista as the main point of contact to support business offerings and expansion.</li>
+                    <li>Supported launch across Canada by designing detailed user physician-patient journeys, product requirement documents that align with protocol workflows, creating tailored visual demo presentation decks and infographics for sales and marketing.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3 class="degree-title">Product Manager</h3>
+                <p class="institution">Healtheon, RCM Health Consultancy, Toronto, CA</p>
+                <ul>
+                    <li>Led research and Agile product development of a PHIPA compliant SaaS platform for 20+ family doctors that enabled the digital transformation of primary clinics using AI to increase patient engagement, communication and reduce wait times.</li>
+                    <li>Managed cross-functional team collaborations between C-suite, marketing, sales, and software engineers; overseeing compliance audits, risk management planning, following budget constraints, and actively engaging customers for feedback.</li>
+                    <li>Spearheaded the launch, marketing and onboarding of 5 clinics across Canada, actively maintaining relationships with primary care physicians, and responding to customer-facing support requests for over 30,000+ patients.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3 class="degree-title">Graduate Student Researcher</h3>
+                <p class="institution">Berman Lab, Sinclair Cancer Research Institute, Queen's University</p>
+                <ul>
+                    <li>Trained and deployed interpretable machine learning models (decision tree, random forest) to predict kidney cancer (RCC) subtypes, providing pathologists with clinical decision support and recommendations based on biomarker insights.</li>
+                    <li>Queried, cleaned, and analyzed complex biomedical datasets from various sources (SQL databases), ensuring data integrity and accuracy for data sharing, presenting weekly findings to clinical and technical stakeholders.</li>
+                    <li>Applied unsupervised learning models, PCA, hierarchical clustering, and UMAP to explore latent structure and heterogeneity in high-dimensional RCC biomarker data, calculating PC loadings to show how much each feature contributes.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience">
+        <h2 class="section-title">Extracurriculars</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 class="degree-title">Venture Capital Fellow</h3>
+                <p class="institution">HaloHealth Angel Investment Group, Toronto, ON</p>
+                <ul>
+                    <li>Conducted commercial, clinical, and regulatory due diligence on early-stage digital health and biotechnology startups across disease areas to inform on market strategy, scalability and product defensibility.</li>
+                    <li>Developed investment memos and pitch critiques, synthesizing scientific, financial, and strategic insights contributed to portfolio support and ecosystem engagement, gaining exposure to fund operations and venture decision-making.</li>
+                </ul>
+                <button class="learn-more-btn" onclick="openModal('modal3')">Learn More</button>
+            </div>
+
+            <div class="timeline-item">
+                <h3 class="degree-title">Design Team</h3>
+                <p class="institution">PostOpCare, QMIND, Queen's University</p>
+                <ul>
+                    <li>Built an Agentic AI powered system (OpenEvidence) that automatically retrieves clinical literature and generates evidence based, post operative care instructions for patient education, improving health outcomes and reducing clinic staff workload.</li>
+                    <li>Defined project scope, direction, and requirements so that all members are aligned, prioritizing features for MVP, designing ablation studies to test model performance and creating fallback plans so that we can efficiently navigate milestones.</li>
+                    <li>Designed medical information validation framework to manage dataset schema, creating a pipeline for parsing documents, ingesting them into QDrant using RAG-based approach while ensuring information accuracy.</li>
+                </ul>
+                <button class="learn-more-btn" onclick="openModal('modal4')">Learn More</button>
+            </div>
+
+            <div class="timeline-item">
+                <h3 class="degree-title">Data Research Volunteer</h3>
+                <p class="institution">Giacomini Lab, Membrane Transporter Functions and Genomics Laboratory, UCSF</p>
+                <ul>
+                    <li>Conducted computational analysis of SLC6A1 variants for neurodevelopmental disorders using genomic foundation language models such as Evo2 to investigate functional impact of genetic variants of the orphaned GABA transporter SLC6A12.</li>
+                    <li>Using Evo2 to calculate entropy scores for SLC6A1 SNP as training data to then predict entropy scores using regression models on similar SLC6A12 sequences to identify variants that have high likelihood of mis-trafficking or loss of function.</li>
+                    <li>Co-authored "AI-Driven Transformation of Digital Therapeutics and Their Implications in Clinical and Regulatory Settings" considered for publication in npj Digital Medicine, a review exploring how artificial intelligence is transforming digital therapeutics under the supervision of Dr. Joanne Chun.</li>
+                </ul>
+                <button class="learn-more-btn" onclick="openModal('modal5')">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="projects-container">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="project-card">
+                <h3 class="project-title">Renal Cell Carcinoma Subtype Classification using Decision Tree Models</h3>
+                <p class="project-description">Trained and deployed interpretable machine learning models (decision tree, random forest) to predict kidney cancer (RCC) subtypes, providing pathologists with clinical decision support and recommendations based on biomarker insights.</p>
+                <button class="learn-more-btn" onclick="openModal('modal1')">Learn More</button>
+            </div>
+
+            <div class="project-card">
+                <h3 class="project-title">Prediction Model for In-Hospital Mortality in Intensive Care Unit Patients with Heart Failure</h3>
+                <p class="project-description">Developed and validated a prediction model for all cause in hospital mortality among ICU admitted Heart Failure (HF) patients.</p>
+                <button class="learn-more-btn" onclick="openModal('modal2')">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="certificates-section">
+        <div class="certificates-container">
+            <h2 class="section-title">Certificates</h2>
+            <ul class="certificates-list">
+                <li>TCPS 2: CORE 2022 (Ethical Conduct of Research Involving Human) Certified (2024)</li>
+                <li>CITI Canada Good Clinical Practice Certified (2025) and familiar with CDISC Standard (SDTM, ADaM)</li>
+                <li>Certificate for Schulich Venture Academy - Venture Operations (2024)</li>
+                <li>Admare BioInnovation Scientist Program Certificate (2024) where I learned more about Good Clinical Practice (GCP), Investigational New Drug submissions, Stage Gate Decision Points and how to create a Target Product Profile (TPP).</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="skills-container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-content">
+                <p><strong>Technical:</strong> Python (pandas, numpy, scikit, pytorch, seaborn, tensorflow, streamlit), R (dplyr, caret, tidyverse, ggplot2, shiny), SQL, SAS, SPSS, MATLAB</p>
+                <p><strong>Software:</strong> Docker, Version Control (Git), Jira, Confluence, Langchain, REDCap, Tableau, Accuro EMR, Epic EMR, AWS S3, BigQuery (GCP)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Renal Cell Carcinoma Subtype Classification using Decision Tree Models</h2>
+            <p>This project focused on developing interpretable machine learning models to classify kidney cancer subtypes, providing valuable clinical decision support for pathologists.</p>
+            <h3>Key Features:</h3>
+            <ul>
+                <li>Trained decision tree and random forest models for RCC subtype prediction</li>
+                <li>Achieved high accuracy in classifying different kidney cancer subtypes</li>
+                <li>Provided interpretable results based on biomarker insights</li>
+                <li>Enabled pathologists to make more informed clinical decisions</li>
+            </ul>
+            <h3>Technologies Used:</h3>
+            <p>Python, Scikit-learn, Random Forest, Decision Trees, Biomarker Analysis</p>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Prediction Model for In-Hospital Mortality in Intensive Care Unit Patients with Heart Failure</h2>
+            <p>This project involved developing and validating a comprehensive prediction model to assess mortality risk for ICU patients with heart failure.</p>
+            <h3>Key Features:</h3>
+            <ul>
+                <li>Developed predictive model for all-cause in-hospital mortality</li>
+                <li>Validated model performance on ICU Heart Failure patient cohorts</li>
+                <li>Identified key risk factors and predictive features</li>
+                <li>Provided actionable insights for clinical intervention</li>
+            </ul>
+            <h3>Technologies Used:</h3>
+            <p>Python, Statistical Modeling, Clinical Data Analysis, Predictive Analytics</p>
+        </div>
+    </div>
+
+    <!-- Modal 3 - Venture Capital Fellow -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Venture Capital Fellow</h2>
+            <h3>HaloHealth Angel Investment Group, Toronto, ON</h3>
+            <p>As a Venture Capital Fellow, I gained hands-on experience in evaluating and supporting early-stage digital health and biotechnology startups.</p>
+            <h3>Key Responsibilities:</h3>
+            <ul>
+                <li>Conducted comprehensive due diligence across commercial, clinical, and regulatory dimensions</li>
+                <li>Evaluated market strategy, scalability potential, and product defensibility for digital health startups</li>
+                <li>Synthesized scientific, financial, and strategic insights into investment recommendations</li>
+                <li>Contributed to portfolio support and ecosystem engagement activities</li>
+                <li>Gained exposure to fund operations and venture decision-making processes</li>
+            </ul>
+            <h3>Skills Developed:</h3>
+            <p>Due Diligence, Market Analysis, Investment Thesis Development, Scientific Evaluation, Strategic Communication</p>
+        </div>
+    </div>
+
+    <!-- Modal 4 - Design Team (PostOpCare AI System) -->
+    <div id="modal4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>Design Team - PostOpCare AI System</h2>
+            <h3>QMIND, Queen's University</h3>
+            <p>Led the design and development of an agentic AI-powered system called OpenEvidence that automatically generates evidence-based post-operative care instructions for patients.</p>
+            <h3>Project Highlights:</h3>
+            <ul>
+                <li>Designed and built an automated system that retrieves clinical literature and generates personalized post-operative care instructions</li>
+                <li>Improved patient health outcomes while reducing clinic staff workload</li>
+                <li>Implemented RAG-based pipeline using QDrant for medical information validation</li>
+                <li>Created comprehensive project scope, MVP features, and performance testing framework</li>
+                <li>Developed fallback plans and milestone tracking for efficient project navigation</li>
+            </ul>
+            <h3>Technologies Used:</h3>
+            <p>AI/ML, RAG (Retrieval-Augmented Generation), QDrant, Clinical NLP, Medical Data Validation</p>
+        </div>
+    </div>
+
+    <!-- Modal 5 - Data Research Volunteer -->
+    <div id="modal5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal5')">&times;</span>
+            <h2>Data Research Volunteer</h2>
+            <h3>Giacomini Lab, Membrane Transporter Functions and Genomics Laboratory, UCSF</h3>
+            <p>Conducted cutting-edge computational analysis of genetic variants using foundation language models to investigate neurodevelopmental disorders.</p>
+            <h3>Research Contributions:</h3>
+            <ul>
+                <li>Applied genomic foundation language models (Evo2) to analyze SLC6A1 variants associated with neurodevelopmental disorders</li>
+                <li>Investigated functional impact of genetic variants on the GABA transporter SLC6A12</li>
+                <li>Developed entropy-based prediction models to identify variants with high likelihood of mis-trafficking or loss of function</li>
+                <li>Co-authored manuscript on AI-driven transformation of digital therapeutics for publication in npj Digital Medicine</li>
+                <li>Explored regulatory and clinical implications of AI in digital therapeutics under Dr. Joanne Chun's supervision</li>
+            </ul>
+            <h3>Technologies & Methods:</h3>
+            <p>Genomic Foundation Models (Evo2), Computational Biology, Variant Analysis, Entropy Scoring, Regression Modeling, Scientific Writing</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 Ryan. All rights reserved.</p>
+    </footer>
+</body>
+</html>
