@@ -1,2 +1,2 @@
 # PORTFOLIO WEBSITE
-Portfolio website including past experience, interests, projects and articles 
+Portfolio website to include relevant experience, projects, interests, and articles. 
