@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NNRCG7WL8P"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-NNRCG7WL8P');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ryan Tso - Biomedical Data Scientist</title>
@@ -100,6 +110,104 @@
             margin: 0 auto;
             padding: 12rem 4rem 8rem;
             animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        /* Horizontal Timeline */
+        .horizontal-timeline-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 4rem 4rem 6rem;
+            overflow-x: auto;
+        }
+
+        .horizontal-timeline {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-width: 1200px;
+            padding: 4rem 2rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #d0d0d0;
+            transform: translateY(-50%);
+        }
+
+        .timeline-items-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .h-timeline-item {
+            position: relative;
+            text-align: center;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .h-timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #d0d0d0;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+            border: 3px solid var(--bg-primary);
+        }
+
+        .h-timeline-content {
+            position: relative;
+        }
+
+        .h-timeline-content.above {
+            margin-bottom: 3rem;
+        }
+
+        .h-timeline-content.below {
+            margin-top: 3rem;
+        }
+
+        .h-timeline-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .h-timeline-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+
+        /* Vertical connectors */
+        .h-timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: #d0d0d0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .h-timeline-item.above::before {
+            top: 0;
+            height: calc(100% - 4rem);
+        }
+
+        .h-timeline-item.below::before {
+            bottom: 0;
+            height: calc(100% - 4rem);
         }
 
         @keyframes fadeInUp {
@@ -244,41 +352,56 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
             nav ul {
-                gap: 1.5rem;
+                gap: 1rem;
                 padding: 1rem;
+                font-size: 0.8rem;
             }
 
             nav a {
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
 
             .hero {
-                padding: 10rem 2rem 6rem;
+                padding: 8rem 1rem 4rem;
             }
 
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 2.5rem;
             }
 
             .hero .subtitle {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
             }
 
             .hero .description {
-                font-size: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .cta-button {
+                padding: 0.65rem 1.5rem;
+                font-size: 0.9rem;
             }
 
             .experience {
-                padding: 2rem;
+                padding: 2rem 1rem;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .timeline {
-                padding-left: 2rem;
+                padding-left: 1.5rem;
+            }
+
+            .timeline::before {
+                left: 3px;
             }
 
             .timeline-item {
@@ -286,9 +409,154 @@
             }
 
             .timeline-item::before {
-                left: -2.5rem;
+                left: -2rem;
+                width: 14px;
+                height: 14px;
+            }
+
+            .degree-title {
+                font-size: 1.2rem;
+            }
+
+            .institution {
+                font-size: 0.95rem;
+            }
+
+            .timeline-item li {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .learn-more-btn {
+                font-size: 0.9rem;
+            }
+
+            /* Projects Section Mobile */
+            .projects-section {
+                padding: 2rem 1rem;
+            }
+
+            .project-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .project-title {
+                font-size: 1.3rem;
+            }
+
+            .project-description {
+                font-size: 0.9rem;
+            }
+
+            /* Certificates Mobile */
+            .certificates-section {
+                padding: 2rem 1rem;
+            }
+
+            .certificates-list li {
+                font-size: 0.9rem;
+            }
+
+            /* Skills Mobile */
+            .skills-section {
+                padding: 2rem 1rem;
+            }
+
+            .skills-content p {
+                font-size: 0.9rem;
+            }
+
+            /* Modal Mobile */
+            .modal-content {
+                width: 90%;
+                padding: 2rem 1.5rem;
+                margin: 10% auto;
+            }
+
+            .modal-content h2 {
+                font-size: 1.5rem;
+                padding-right: 2rem;
+            }
+
+            .modal-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .modal-content p,
+            .modal-content li {
+                font-size: 0.95rem;
+            }
+
+            .close {
+                font-size: 2rem;
+                right: 1rem;
+                top: 1rem;
+            }
+
+            .footer {
+                padding: 1.5rem 1rem;
+            }
+
+            .footer p {
+                font-size: 0.85rem;
+            }
+
+            /* Horizontal Timeline Mobile */
+            .horizontal-timeline-section {
+                padding: 2rem 1rem;
+            }
+
+            .horizontal-timeline {
+                min-width: 900px;
+                padding: 3rem 1rem;
+            }
+
+            .h-timeline-item {
+                max-width: 150px;
+            }
+
+            .h-timeline-title {
+                font-size: 0.8rem;
+            }
+
+            .h-timeline-subtitle {
+                font-size: 0.75rem;
+            }
+
+            .h-timeline-dot {
                 width: 16px;
                 height: 16px;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            nav ul {
+                gap: 0.5rem;
+                padding: 0.75rem 0.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 0.7rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .project-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem 1rem;
             }
         }
 
@@ -514,6 +782,81 @@
             font-weight: 600;
         }
 
+        /* Horizontal Timeline */
+        .horizontal-timeline-section {
+            max-width: 1400px;
+            margin: 6rem auto 4rem;
+            padding: 4rem 4rem 6rem;
+            overflow-x: auto;
+        }
+
+        .horizontal-timeline {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-width: 1200px;
+            padding: 4rem 2rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 2rem;
+            right: 2rem;
+            height: 3px;
+            background: #d0d0d0;
+            transform: translateY(-50%);
+        }
+
+        .timeline-milestone {
+            position: relative;
+            flex: 1;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .milestone-dot {
+            width: 20px;
+            height: 20px;
+            background: #d0d0d0;
+            border: 4px solid var(--bg-primary);
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .milestone-content {
+            position: absolute;
+            width: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .milestone-content.top {
+            bottom: 50px;
+        }
+
+        .milestone-content.bottom {
+            top: 50px;
+        }
+
+        .milestone-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 0.25rem;
+        }
+
+        .milestone-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.3;
+            font-weight: 600;
+        }
+
         /* Smooth Scroll */
         html {
             scroll-behavior: smooth;
@@ -575,16 +918,6 @@
     </script>
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNRCG7WL8P"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-NNRCG7WL8P');
-</script>
-
 <body>
     <nav>
         <ul>
@@ -603,7 +936,55 @@ gtag('config', 'G-NNRCG7WL8P');
             Current Masters of Biomedical Informatics student at Queen's University, conducting research under Dr. David Berman, Head of Pathology at the Sinclair Cancer Research Center and Dr. Tyryshkin, Biomedical Data Scientist.
 
         </p>
-        <a href="mailto:ryancytso@gmail.com" class="cta-button">Contact Me</a>
+        <a href="/cdn-cgi/l/email-protection#6b19120a0508121f18042b0c060a020745080406" class="cta-button">Contact Me</a>
+    </section>
+
+    <section class="horizontal-timeline-section">
+        <div class="horizontal-timeline">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-milestone">
+                <div class="milestone-content top">
+                    <div class="milestone-title">Bachelors of Health Sciences<br>Biomedical Discovery and<br>Commercialization<br>at McMaster University</div>
+                </div>
+                <div class="milestone-dot"></div>
+            </div>
+
+            <div class="timeline-milestone">
+                <div class="milestone-dot"></div>
+                <div class="milestone-content bottom">
+                    <div class="milestone-title">Assistant Researcher<br>in the Stokes Lab</div>
+                </div>
+            </div>
+
+            <div class="timeline-milestone">
+                <div class="milestone-content top">
+                    <div class="milestone-title">Business Development Consultant<br>at RCM Health Consultancy</div>
+                </div>
+                <div class="milestone-dot"></div>
+            </div>
+
+            <div class="timeline-milestone">
+                <div class="milestone-dot"></div>
+                <div class="milestone-content bottom">
+                    <div class="milestone-title">Product Manager<br>at Healtheon<br>(RCM Health Consultancy)</div>
+                </div>
+            </div>
+
+            <div class="timeline-milestone">
+                <div class="milestone-content top">
+                    <div class="milestone-title">Masters of Biomedical Informatics<br>at Queen's University</div>
+                </div>
+                <div class="milestone-dot"></div>
+            </div>
+
+            <div class="timeline-milestone">
+                <div class="milestone-dot"></div>
+                <div class="milestone-content bottom">
+                    <div class="milestone-title">Graduate Researcher<br>in the Berman Lab</div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="about" class="experience">
@@ -611,22 +992,22 @@ gtag('config', 'G-NNRCG7WL8P');
         
         <div class="timeline">
             <div class="timeline-item">
-                <h3 class="degree-title">Bachelor of Health Science,<br>Biomedical Discovery and Commercialization (BDC)</h3>
-                <p class="institution">Department of Biochemistry and Biomedical Science, McMaster University</p>
-                <ul>
-                    <li>Specializing in Drug Discovery Methods (vaccines, antibiotics, antivirals), Clinical Trial Research, and focus on Laboratory Testing, Business Development, Project Management Skills, Marketing, Finance & Accounting acumen.</li>
-                    <li>1st place of 2022 BDC Business Engagement Pitch Competition for a novel drug therapy against RSV supported by preclinical evidence, unmet clinical need analysis and strategic market positioning.</li>
-                    <li>Conducted Next Generation Sequencing (NGS) Rare Variant Analysis using SKAT statistical method to identify joint effects of multiple variants on phenotype, determining statistical significance between the SNP and the outcome phenotype.</li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
                 <h3 class="degree-title">Masters of Biomedical Informatics (MBI)</h3>
                 <p class="institution">Department of Computing and Biomedical and Molecular Sciences, Queen's University</p>
                 <ul>
                     <li>Conducted progression-free survival analysis on TCGA patient cohort using SAS to generate Kaplan-Meier Curves, calculating hazard ratio to benchmark new treatment options while producing CDISC-compliant adverse event summary tables.</li>
                     <li>Developed multivariate prognostic survival model on breast cancer patient cohort using penalized cox regression, random survival forest, gradient boosted survival trees, assessing predictive discrimination using concordance index.</li>
                     <li>Gathered primary data into Oracle Portal by Pathology Report Data Extraction and actively contributed to the Quantitative Nuclear Grading (QNG) project to automate feature extraction.</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3 class="degree-title">Bachelor of Health Science,<br>Biomedical Discovery and Commercialization (BDC)</h3>
+                <p class="institution">Department of Biochemistry and Biomedical Science, McMaster University</p>
+                <ul>
+                    <li>Specializing in Drug Discovery Methods (vaccines, antibiotics, antivirals), Clinical Trial Research, and focus on Laboratory Testing, Business Development, Project Management Skills, Marketing, Finance & Accounting acumen.</li>
+                    <li>1st place of 2022 BDC Business Engagement Pitch Competition for a novel drug therapy against RSV supported by preclinical evidence, unmet clinical need analysis and strategic market positioning.</li>
+                    <li>Conducted Next Generation Sequencing (NGS) Rare Variant Analysis using SKAT statistical method to identify joint effects of multiple variants on phenotype, determining statistical significance between the SNP and the outcome phenotype.</li>
                 </ul>
             </div>
         </div>
@@ -853,7 +1234,4 @@ gtag('config', 'G-NNRCG7WL8P');
     </div>
 
     <footer class="footer">
-        <p>© 2026 Ryan. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+        <p>© 2026 Ryan. All rights re
